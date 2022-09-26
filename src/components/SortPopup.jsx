@@ -4,7 +4,7 @@ export default function SortPopup ({ items }) {
     const [visiblePopup, setVisiblePopup] = useState(false);
     const [activeItem, setActiveItem] = useState(0);
     const sortRef = useRef();
-    const activeLabel = items[activeItem];
+    const activeLabel = items[activeItem].name;
 
     const toggleVisiblePopup = () => {
         setVisiblePopup(!visiblePopup);
@@ -47,13 +47,13 @@ export default function SortPopup ({ items }) {
             {visiblePopup && (
                 <div className="sort__popup">
                     <ul>
-                        {items && items.map((item, i) =>
+                        {items && items.map((obj, i) =>
                             <li
                                 className={activeItem === i ? 'active' : ''}
                                 onClick={() => onSelectItem(i)}
-                                key={`${item}_${i}`}
+                                key={`${obj.type}_${i}`}
                             >
-                                {item}
+                                {obj.name}
                             </li>
                         )}
                     </ul>

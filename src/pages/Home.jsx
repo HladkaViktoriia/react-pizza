@@ -1,6 +1,13 @@
 import {Categories, SortPopup, PizzaBlock} from '../components';
+import {useSelector} from 'react-redux';
 
-export default function Home ({items}) {
+export default function Home () {
+    const {items} = useSelector(({pizzas, filters}) => {
+        return {
+            items: pizzas.items,
+        }
+    });
+
     return (
         <div className="container">
             <div className="content__top">
@@ -13,11 +20,12 @@ export default function Home ({items}) {
                         'Закрытые',
                     ]}
                 />
+
                 <SortPopup
                     items={[
-                        'популярности',
-                        'цене',
-                        'алфавиту',
+                        {name: 'популярности', type: 'popular'},
+                        {name: 'цене', type: 'price'},
+                        {name: 'алфавиту', type: 'alphabet'},
                     ]}
                 />
             </div>
