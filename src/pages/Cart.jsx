@@ -1,5 +1,7 @@
 export default function Cart () {
     return (
-        <div>Корзина</div>
+        <div className="container">
+            Корзина
+        </div>
     )
 }
